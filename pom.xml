@@ -49,6 +49,15 @@
     </dependencyManagement>
 
     <dependencies>
+        <!-- Annotationen im Code, mit deren Hilfe die Jetbrains-Entwicklungsumgebung einige Bugs besser finden kann.-->
+        <dependency>
+            <groupId>org.jetbrains</groupId>
+            <artifactId>annotations</artifactId>
+            <version>17.0.0</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- Annotationen und APIs fuer Dependency Injection -->
         <dependency>
             <groupId>javax.annotation</groupId>
             <artifactId>javax.annotation-api</artifactId>
@@ -63,12 +72,14 @@
             <scope>provided</scope>
         </dependency>
 
+        <!-- Testframework -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
             <scope>test</scope>
         </dependency>
 
+        <!-- Implementierung des Dependency Injection-Frameworks, die waehrend Tests benutzt wird -->
         <dependency>
             <groupId>org.apache.openwebbeans</groupId>
             <artifactId>openwebbeans-spi</artifactId>
@@ -82,7 +93,6 @@
             <version>${openwebbeans.version}</version>
             <scope>test</scope>
         </dependency>
-
 
         <dependency>
             <groupId>org.apache.openwebbeans</groupId>
