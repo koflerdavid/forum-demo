@@ -45,7 +45,7 @@ public class SimpleForumThread implements ForumThread<Simple> {
   @Override
   public SimpleForumPost addPost(ForumAuthor<Simple> postAuthor, String content) {
     ForumPostId forumPostId = new ForumPostId(UUID.randomUUID());
-    SimpleForumPost newPost = new SimpleForumPost(forumPostId, postAuthor, content);
+    SimpleForumPost newPost = new SimpleForumPost(forumPostId, forumThreadId, postAuthor, content);
     posts.add(newPost);
     return newPost;
   }

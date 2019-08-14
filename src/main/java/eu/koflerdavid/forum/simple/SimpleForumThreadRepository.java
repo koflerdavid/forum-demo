@@ -12,7 +12,7 @@ public class SimpleForumThreadRepository implements ForumThreadFactory<Simple>, 
   @Override
   public SimpleForumThread newForumThread(String threadTitle, ForumAuthor<Simple> forumOpener, String textOfFirstPost) {
     ForumThreadId forumThreadId = new ForumThreadId(UUID.randomUUID());
-    SimpleForumPost firstPost = new SimpleForumPost(new ForumPostId(UUID.randomUUID()), forumOpener, textOfFirstPost);
+    SimpleForumPost firstPost = new SimpleForumPost(new ForumPostId(UUID.randomUUID()), forumThreadId, forumOpener, textOfFirstPost);
 
     return new SimpleForumThread(forumThreadId, threadTitle, firstPost);
   }

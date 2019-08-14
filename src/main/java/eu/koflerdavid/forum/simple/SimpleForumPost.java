@@ -8,14 +8,17 @@ public class SimpleForumPost implements ForumPost<Simple> {
 
   private ForumPostId forumPostId;
 
+  private ForumThreadId forumThreadId;
+
   private ForumAuthor<Simple> author;
 
   private final String content;
 
   private Instant whenPosted;
 
-  SimpleForumPost(ForumPostId forumPostId, ForumAuthor<Simple> author, String content) {
+  SimpleForumPost(ForumPostId forumPostId, ForumThreadId forumThreadId, ForumAuthor<Simple> author, String content) {
     this.forumPostId = forumPostId;
+    this.forumThreadId = forumThreadId;
     this.author = author;
     this.content = content;
     this.whenPosted = Instant.now();
@@ -33,7 +36,7 @@ public class SimpleForumPost implements ForumPost<Simple> {
 
   @Override
   public ForumThreadId getIdOfContainingForumThread() {
-    return null;
+    return forumThreadId;
   }
 
   @Override

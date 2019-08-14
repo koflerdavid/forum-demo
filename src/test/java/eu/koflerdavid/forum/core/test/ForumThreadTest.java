@@ -41,6 +41,11 @@ class ForumThreadTest {
     Optional<ForumThread<Simple>> forumThreadById = forumRepository.getForumThreadById(forumThreadId);
 
     Assertions.assertTrue(forumThreadById.isPresent());
+
+    ForumPost<Simple> firstPost = forumThreadById.get().getPosts().get(0);
+    assertEquals(forumThreadId, firstPost.getIdOfContainingForumThread());
+    assertEquals("Anfangstext", firstPost.getContent());
+
     assertEquals(threadTitle, forumThreadById.get().getTitle(),
             "Thread title does not match");
   }
@@ -61,12 +66,14 @@ class ForumThreadTest {
   @ValueSource(strings = {"Text 1", "Text 2"})
   void hinzufuegenEinesNeuenPostsFunktioniert(String contentOfNewPost) {
     ForumThread<Simple> thread = forumThreadFactory.newForumThread("Ein Titel", defaultAuthor, "Erster Post");
-    thread.addPost(defaultAuthor, contentOfNewPost);
+    ForumPost<Simple> newPost = thread.addPost(defaultAuthor, contentOfNewPost);
     forumRepository.saveChangesToForumThread(thread);
 
     List<ForumPost<Simple>> posts = thread.getPosts();
     assertEquals(2, posts.size());
-    assertEquals("Erster Post", posts.get(0).getContent());
+
+    assertEquals(newPost.getForumPostId(), posts.get(1).getForumPostId());
+    assertEquals(thread.getForumThreadId(), posts.get(1).getIdOfContainingForumThread());
     assertEquals(contentOfNewPost, posts.get(1).getContent());
   }
 
