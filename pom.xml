@@ -7,10 +7,41 @@
     <groupId>eu.koflerdavid.forum</groupId>
     <artifactId>forum</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <name>Forum Parent-Projekt</name>
+    <description>Aggregiert die Unterprojekte und definiert Properties und Abhaengigkeiten.</description>
+    <inceptionYear>2019</inceptionYear>
+
+    <developers>
+        <developer>
+            <name>David Kofler</name>
+            <email>kofler.david@gmail.com</email>
+            <roles>
+                <role>BDFL</role>
+            </roles>
+        </developer>
+    </developers>
+
+    <modules>
+        <module>forum-core</module>
+    </modules>
+
+    <url>https://github.com/koflerdavid/forum-demo</url>
+
+    <issueManagement>
+        <url>https://github.com/koflerdavid/forum-demo/issues</url>
+        <system>GitHub Issues</system>
+    </issueManagement>
+
+    <scm>
+        <connection>scm:git:https://github.com/koflerdavid/forum-demo.git</connection>
+        <developerConnection>scm:git:git@github.com:koflerdavid/forum-demo.git</developerConnection>
+        <url>https://github.com/koflerdavid/forum-demo</url>
+    </scm>
 
     <properties>
-        <java.version>14</java.version>
-        <maven.compiler.release>14</maven.compiler.release>
+        <java.version>13</java.version>
+        <maven.compiler.release>${java.version}</maven.compiler.release>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <cdi-test.version>2.3.0</cdi-test.version>
         <deltaspike.version>1.9.0</deltaspike.version>
@@ -46,62 +77,46 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+
+            <!-- Annotationen im Code, mit deren Hilfe die Jetbrains-Entwicklungsumgebung einige Bugs besser finden kann.-->
+            <dependency>
+                <groupId>org.jetbrains</groupId>
+                <artifactId>annotations</artifactId>
+                <version>17.0.0</version>
+            </dependency>
+
+            <!-- Annotationen und APIs fuer Dependency Injection -->
+            <dependency>
+                <groupId>javax.annotation</groupId>
+                <artifactId>javax.annotation-api</artifactId>
+                <version>1.3.2</version>
+            </dependency>
+
+            <dependency>
+                <groupId>javax.enterprise</groupId>
+                <artifactId>cdi-api</artifactId>
+                <version>2.0.SP1</version>
+            </dependency>
+
+            <!-- Implementierung des Dependency Injection-Frameworks, die waehrend Tests benutzt wird -->
+            <dependency>
+                <groupId>org.apache.openwebbeans</groupId>
+                <artifactId>openwebbeans-spi</artifactId>
+                <version>${openwebbeans.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.openwebbeans</groupId>
+                <artifactId>openwebbeans-impl</artifactId>
+                <version>${openwebbeans.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.openwebbeans</groupId>
+                <artifactId>openwebbeans-junit5</artifactId>
+                <version>${openwebbeans.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
-
-    <dependencies>
-        <!-- Annotationen im Code, mit deren Hilfe die Jetbrains-Entwicklungsumgebung einige Bugs besser finden kann.-->
-        <dependency>
-            <groupId>org.jetbrains</groupId>
-            <artifactId>annotations</artifactId>
-            <version>17.0.0</version>
-            <scope>provided</scope>
-        </dependency>
-
-        <!-- Annotationen und APIs fuer Dependency Injection -->
-        <dependency>
-            <groupId>javax.annotation</groupId>
-            <artifactId>javax.annotation-api</artifactId>
-            <version>1.3.2</version>
-            <scope>provided</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>javax.enterprise</groupId>
-            <artifactId>cdi-api</artifactId>
-            <version>2.0.SP1</version>
-            <scope>provided</scope>
-        </dependency>
-
-        <!-- Testframework -->
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter</artifactId>
-            <scope>test</scope>
-        </dependency>
-
-        <!-- Implementierung des Dependency Injection-Frameworks, die waehrend Tests benutzt wird -->
-        <dependency>
-            <groupId>org.apache.openwebbeans</groupId>
-            <artifactId>openwebbeans-spi</artifactId>
-            <version>${openwebbeans.version}</version>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.openwebbeans</groupId>
-            <artifactId>openwebbeans-impl</artifactId>
-            <version>${openwebbeans.version}</version>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.openwebbeans</groupId>
-            <artifactId>openwebbeans-junit5</artifactId>
-            <version>${openwebbeans.version}</version>
-            <scope>test</scope>
-        </dependency>
-
-    </dependencies>
 
 </project>
