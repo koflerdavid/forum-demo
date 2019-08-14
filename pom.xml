@@ -11,6 +11,7 @@
     <properties>
         <java.version>14</java.version>
         <maven.compiler.release>14</maven.compiler.release>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <cdi-test.version>2.3.0</cdi-test.version>
         <deltaspike.version>1.9.0</deltaspike.version>
         <junit.version>5.5.1</junit.version>
