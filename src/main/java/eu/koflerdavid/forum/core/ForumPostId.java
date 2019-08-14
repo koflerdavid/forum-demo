@@ -13,7 +13,7 @@ public class ForumPostId extends AbstractEntityId {
   @Override
   public String toString() {
     return "ForumPostId{" +
-            "uuid=" + uuid +
+            "uuid=" + getUuid() +
             '}';
   }
 }

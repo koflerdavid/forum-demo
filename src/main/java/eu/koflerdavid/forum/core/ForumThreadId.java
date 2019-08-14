@@ -14,7 +14,7 @@ public class ForumThreadId extends AbstractEntityId {
   @Override
   public String toString() {
     return "ForumThreadId{" +
-            "uuid=" + uuid +
+            "uuid=" + getUuid() +
             '}';
   }
 

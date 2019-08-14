@@ -11,7 +11,7 @@ public class AuthorId extends AbstractEntityId {
   @Override
   public String toString() {
     return "AuthorId{" +
-            "uuid=" + uuid +
+            "uuid=" + getUuid() +
             '}';
   }
 

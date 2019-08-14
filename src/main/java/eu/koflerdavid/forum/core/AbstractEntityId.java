@@ -13,10 +13,10 @@ import java.util.UUID;
  */
 public abstract class AbstractEntityId {
 
-  protected UUID uuid;
+  private UUID uuid;
 
   @Contract("null -> fail")
-  public AbstractEntityId(UUID uuid) {
+  AbstractEntityId(UUID uuid) {
     if (uuid == null) {
       throw new NullPointerException("Der UUID-Parameter war null");
     }
